@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc  http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--扫描sms包下的controller注解-->
+    <context:component-scan base-package="priv.sunyj.sms">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--    &lt;!&ndash;    静态资源放行&ndash;&gt;-->
+    <!--    <mvc:default-servlet-handler/>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+            <mvc:mapping path="/**"/>
+            <!--放行-->
+            <mvc:exclude-mapping path="/login/**"/>
+            <bean class="priv.sunyj.sms.util.TokenInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 开启注解，支持springmvc更加高级的内容，jsp303，快捷的ajax等-->
+    <!--    与requestBody注解配合使用，-->
+    <mvc:annotation-driven/>
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/gms"
+                        userId="root"
+                        password="admin">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="priv.sunyj.sms.bean" targetProject="D:\myWorkspace\code\IDEA\sms\src\main\java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybaties\mapper"  targetProject="D:\myWorkspace\code\IDEA\sms\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="priv.sunyj.sms.dao"  targetProject="D:\myWorkspace\code\IDEA\sms\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="t_auth" domainObjectName="Authority" />
+        <table tableName="t_auth_power" domainObjectName="AuthPower" />
+        <table tableName="t_class" domainObjectName="Class" />
+        <table tableName="t_course" domainObjectName="Course" />
+        <table tableName="t_ins" domainObjectName="Institution" />
+        <table tableName="t_major" domainObjectName="Major" />
+        <table tableName="t_power" domainObjectName="Power" />
+        <table tableName="t_stu" domainObjectName="Student" />
+        <table tableName="t_stu_cour" domainObjectName="StuCour" />
+        <table tableName="t_user" domainObjectName="User" />
+        <table tableName="t_maj_cour" domainObjectName="MajCour" />
+        <table tableName="t_xuanke" domainObjectName="XuanKe" />
+
+    </context>
+</generatorConfiguration>
